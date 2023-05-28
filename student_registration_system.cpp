@@ -25,6 +25,37 @@ void addStudent(vector<Student>& students) {
     cout << "Student added successfully!" << endl;
 }
 
+// Function to display all registered students
+void displayStudents(const vector<Student>& students) {
+    if (students.empty()) {
+        cout << "No students registered." << endl;
+    } else {
+        cout << "Registered students:" << endl;
+        for (const auto& student : students) {
+            cout << "Name: " << student.name << ", Age: " << student.age << ", Course: " << student.course << endl;
+        }
+    }
+}
+
+// Function to search for a student by name
+void searchStudent(const vector<Student>& students) {
+    string searchName;
+    cout << "Enter student name to search: ";
+    cin >> searchName;
+    
+    auto it = find_if(students.begin(), students.end(), [&searchName](const Student& student) {
+        return student.name == searchName;
+    });
+    
+    if (it != students.end()) {
+        cout << "Student found!" << endl;
+        cout << "Name: " << it->name << ", Age: " << it->age << ", Course: " << it->course << endl;
+    } else {
+        cout << "Student not found." << endl;
+    }
+}
+
+
 int main() {
     vector<Student> students;
     int choice;
@@ -41,6 +72,12 @@ int main() {
         switch (choice) {
             case 1:
                 addStudent(students);
+                break;
+            case 2:
+                displayStudents(students);
+                break;
+            case 3:
+                searchStudent(students);
                 break;
             
         }
