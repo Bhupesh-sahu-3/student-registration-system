@@ -79,10 +79,16 @@ int main() {
             case 3:
                 searchStudent(students);
                 break;
+             case 4:
+                cout << "Exiting the program. Goodbye!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+                break;
             
         }
         
-        
+        cout << endl;
     } while (choice != 4);
     
     return 0;
